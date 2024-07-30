@@ -1,7 +1,7 @@
 	                                              Assignment No 1 : C#
 
 BEFORE STARTING YOUR ASSIGNMENT, EXPLORE STRUCTURE OF PROJECT THAT YOU HAVE CREATED
-PRACTICE THIS 
+
 
 1. Display Hello Message
 2. Display result of Addition , subtraction , product , quotient of two numbers
