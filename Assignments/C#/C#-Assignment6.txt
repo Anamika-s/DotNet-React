@@ -1,0 +1,21 @@
+Create a class named Pizza that stores information about a single pizza. It should contain the following: 
+
+Private  instance  variables  to  store  the  size  of  the  pizza  
+the  number of  cheese toppings, 
+the number of pepperoni toppings, and
+the number of ham toppings
+
+Methods : 
+
+Constructor(s) that set all of the instance variables. 
+Use get set methods
+Public methods to get and set the instance variables. 
+A public method named calcCost( ) that returns a double that is the cost of the pizza.
+Pizza cost is determined by: 
+Small: $10 + $2 per topping 
+Medium: $12 + $2 per topping 
+Large: $14 + $2 per topping  
+public method named getDescription( ) that returns a String containing the pizzaSize, quantity of each topping.
+Store some Records and display them (Which structure we should use)
+
+
