@@ -1,0 +1,30 @@
+										Assignment 7
+
+Task 1> Use Directory class and perform following opeartions
+
+Create directory demo
+Create 2 more directories in this folder demo1, demo2
+Add some files to this folder using File & FileInfo both
+Write contents to these files without opening file
+Copy one of the file to demo2 folder 
+Display all files & directories of this folder
+Get their creation time also
+
+Delete all files
+Delete all directories
+
+Task 2> Use FileStream & StreamWriter, StreamReader to work on files
+Create Menu
+1. Create a new file
+2. Add contents to the file
+3. Append contents to the file
+4. Display contents one by opne
+5. Display all contents together
+
+Use Exception Handling in case file do not exist
+
+
+
+
+
+

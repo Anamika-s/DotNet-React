@@ -1,0 +1,13 @@
+https://www.c-sharpcorner.com/article/understanding-properties-in-C-Sharp/
+https://www.tutorialsteacher.com/csharp/csharp-datetime
+
+https://www.c-sharpcorner.com/blogs/date-and-time-format-in-c-sharp-programming1
+
+https://www.geeksforgeeks.org/expression-bodied-members-in-c-sharp/
+
+https://www.geeksforgeeks.org/c-sharp-dictionary-with-examples/
+
+https://www.techiedelight.com/initialize-dictionary-csharp/
+
+
+
