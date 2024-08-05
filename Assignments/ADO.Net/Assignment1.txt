@@ -1,0 +1,30 @@
+START THIS ASSIGNMENT
+
+Perform CRUD Operations on 
+Student Entity
+ID 
+Name 
+DateOfBirth
+Marks 
+Batch
+Course
+
+Database name has to be PracticeDb
+Table > Student
+
+While adding record in Method AddStudent(), we want to send mail to student,  in Email Class , method is SendMail()
+
+Add Method like this
+
+class EMail
+{
+public bool SenEMail()
+{
+/ / some emai code will com here
+return true;
+}
+}
+
+Also, add Test cases 
+1. Number of students should be 5
+2. We have to test AddStudent Method, Add one Mock Test for SenEMail
