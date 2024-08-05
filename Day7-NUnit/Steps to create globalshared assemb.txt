@@ -1,0 +1,15 @@
+Steps to create global/shared assembly
+
+C:\Windows\Microsoft.NET\assembly\GAC_MSIL
+
+1. Create Class Library project (pvt assembly)
+AFter this to make it a global assembly 
+What is global / shared assembly > Any assembly (dll) that is present in GAC(Global Assembly Cache) -->C:\Windows\Microsoft.NET\assembly\GAC_MSIL is ka global assembly
+
+2. Create strong name key , is used to give unique id to your assembly
+3. Use gacutil command to add assembly to gac
+
+FOR REMIANING STEPS, WE HAVE TO USE ADMIN RIGHTS
+
+
+
