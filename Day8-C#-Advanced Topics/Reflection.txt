@@ -1,0 +1,235 @@
+using System;
+using System.Reflection;
+
+namespace Reflection_Demo {
+    
+class Program {
+    
+    // Main Method
+    static void Main(string[] args)
+    {
+        // Initialise t as typeof string
+        Type t = typeof(string);
+
+        // Use Reflection to find about
+        // any sort of data related to t
+        Console.WriteLine("Name : {0}", t.Name);
+        Console.WriteLine("Full Name : {0}", t.FullName);
+        Console.WriteLine("Namespace : {0}", t.Namespace);
+        Console.WriteLine("Base Type : {0}", t.BaseType);
+    }
+}
+}
+
+------------------------------------------------------------------------------
+
+// C# program to illustrate
+// the use of Reflection
+using System;
+using System.Reflection;
+
+namespace Reflection_Metadata {
+    
+// Define a class Student
+class Student {
+    
+    // Properties definition
+    public int RollNo
+    {
+        get;
+        set;
+    }
+    
+    public string Name
+    {
+        get;
+        set;
+    }
+
+    // No Argument Constructor
+    public Student()
+    {
+        RollNo = 0;
+        Name = string.Empty;
+    }
+
+    // Parameterised Constructor
+    public Student(int rno, string n)
+    {
+        RollNo = rno;
+        Name = n;
+    }
+
+    // Method to Display Student Data
+    public void displayData()
+    {
+        Console.WriteLine("Roll Number : {0}", RollNo);
+        Console.WriteLine("Name : {0}", Name);
+    }
+}
+
+class GFG {
+    
+    // Main Method
+    static void Main(string[] args)
+    {
+        // Declare Instance of class Assembly
+        // Call the GetExecutingAssembly method
+        // to load the current assembly
+        Assembly executing = Assembly.GetExecutingAssembly();
+
+        // Array to store types of the assembly
+        Type[] types = executing.GetTypes();
+        foreach(var item in types)
+        {
+            // Display each type
+            Console.WriteLine("Class : {0}", item.Name);
+
+            // Array to store methods
+            MethodInfo[] methods = item.GetMethods();
+            foreach(var method in methods)
+            {
+                // Display each method
+                Console.WriteLine("--> Method : {0}", method.Name);
+
+                // Array to store parameters
+                ParameterInfo[] parameters = method.GetParameters();
+                foreach(var arg in parameters)
+                {
+                    // Display each parameter
+                    Console.WriteLine("----> Parameter : {0} Type : {1}",
+                                            arg.Name, arg.ParameterType);
+                }
+            }
+        }
+    }
+}
+}
+
+---------------------------------------------------------------
+The two main terms appearing in the above topic are Late Binding and reflection. So let us first define these two terms. The binding of methods and objects during run time is called Late Binding or Dynamic Binding. Reflection is the ability of an assembly to inspect its metadata. Metadata contains the information of the data within the assembly. 
+Reflection is used to implement late binding as it allows you to use code that is not available at compile time. We will see the examples of this in the following code segments.
+
+Example 1 : In this program, we make use of late binding because we do not have the knowledge of the class that has to be instantiated at compile time. Declare an object named executing of class Assembly and load the current Assembly using GetExecutingAssembly method. Next, we have to find the type of the class that has to be instantiated later i.e. Student. To do this use the method GetType on the object of Assembly class and store the type in another object called studentType. GetType method expects a String argument which is the complete name of the Class, LateBinding.Student in this case. Since the type is unknown at this point in the program we use the class Type to declare studentType. Now we create an instance of the studentType using the CreateInstance method that uses the type as a parameter. The Activator class contains methods to create types of objects locally or remotely or obtain references to existing remote objects. Next, create a MethodInfo object and use the GetMethod method to store the information. Pass the name of the method as an argument to GetMethod. To invoke GetDetails, use the MethodInfo object to call the Invoke method and pass studentObject as a parameter. And finally, display the details using a String det and also define the class.
+
+// C# program to show the Late 
+// Binding using Reflection
+using System;
+using System.Reflection;
+
+namespace LateBinding {
+
+class Program {
+
+	// Main Method
+	static void Main(string[] args)
+	{
+		// Declare Instance of class Assembly
+		// Call the GetExecutingAssembly method 
+		// to load the current assembly
+		Assembly executing = Assembly.GetExecutingAssembly();
+
+		// To find the type of the Class Student
+		Type studentType = executing.GetType("LateBinding.Student");
+
+		// Create an Instance of the Student type
+		object studentObject = Activator.CreateInstance(studentType);
+
+		// Store the info of the method in an object
+		// of class MethodInfo
+		MethodInfo getMethod = studentType.GetMethod("GetDetails");
+
+		// To store the parameters required
+		// by Method GetDetails
+		String[] param = new String[2];
+		param[0] = "1";
+		param[1] = "Lisa";
+
+		// To display the result of the method
+		String det = (String)getMethod.Invoke(studentObject, param);
+		Console.WriteLine("Student Details : ");
+		Console.WriteLine("Roll Number - Name \n{0}", det);
+
+	} // end Main
+
+} // end Program
+
+
+public class Student {
+
+	public String GetDetails(String RollNumber, String Name)
+	{
+		return RollNumber + " - " + Name;
+	}
+
+} // end Student
+
+}
+
+
+-----------------
+
+Example 2: Another similar example is the code given below that has a Shape class and we are late binding the method shapeName. 
+
+// C# program to show the Late 
+// Binding using Reflection
+using System;
+using System.Reflection;
+
+namespace Geometry {
+
+// class Shape
+public class Shape {
+
+	// Function that gives the name of the 
+	// shape based on the number of sides
+	// the number of sides is a string that
+	// contains the value
+	public String shapeName(String sideNumber)
+	{
+		if (sideNumber == "0" || sideNumber == "1" || sideNumber == "2")
+			return "Not Valid";
+		else if (sideNumber == "3")
+			return "Triangle";
+		else if (sideNumber == "4")
+			return "Quadrilateral";
+		else
+			return "Polygon";
+	}
+
+} // end Shape
+
+class Program {
+
+	// Main Method
+	static void Main(string[] args)
+	{
+		// Object of Assembly class
+		Assembly executable = Assembly.GetExecutingAssembly();
+
+		// To find the type of the class
+		Type shapeType = executable.GetType("Geometry.Shape");
+
+		// To create an instance of Shape class
+		// without prior information about it
+		object shapeObject = Activator.CreateInstance(shapeType);
+
+		// To find the info about the method
+		MethodInfo shapeNameMethod = shapeType.GetMethod("shapeName");
+
+		// Prepare parameters for the method
+		String[] param = new String[1];
+		param[0] = "4";
+
+		// To invoke the method using Invoke
+		String sName = (String)shapeNameMethod.Invoke(shapeObject, param);
+
+		// To display the name of the shape
+		Console.WriteLine("Name of the Shape is {0}", sName);
+
+	} // end Main
+
+} // end Program
+
+}
+

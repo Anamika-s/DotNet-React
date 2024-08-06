@@ -1,0 +1,8 @@
+https://www.bytehide.com/blog/how-to-implement-events-in-csharp
+
+https://www.c-sharpcorner.com/UploadFile/1c8574/events-in-C-Sharp/
+
+
+
+
+

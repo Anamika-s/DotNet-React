@@ -1,0 +1,136 @@
+Delegates
+
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace CollectionEnumDemo
+{
+  
+    class DelegateDemo
+    {
+        delegate int Del(int x, int y);
+
+        static int Add(int x, int y)
+        {
+            return x + y;
+        }
+
+        static int Subtract(int x, int y)
+        {
+            return x - y;
+        }
+        static int Product(int x, int y)
+        {
+            return x * y;
+        }
+        static int Divide(int x, int y)
+        {
+            return x / y;
+        }
+        static void Main()
+        {
+            Del del = new Del(Add);
+            Console.WriteLine(del(10,20));
+
+            del = new Del(Subtract);
+            Console.WriteLine(del(20,10));
+
+
+        }
+    }
+}
+
+------------------------------------------------------------
+Multicast Delegates
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace CollectionEnumDemo
+{
+
+    class MutliCastDelegate
+    {
+        delegate void Del(int x, int y);
+
+        static void Add(int x, int y)
+        {
+            Console.WriteLine(x + y);
+        }
+
+        static void Subtract(int x, int y)
+        {
+            Console.WriteLine(x - y);
+        }
+        static void Product(int x, int y)
+        {
+            Console.WriteLine(x *  y);
+        }
+        static void Divide(int x, int y)
+        {
+            Console.WriteLine(x / y);
+        }
+        static void Main()
+        {
+            Del del = new Del(Add);
+            del += new Del(Subtract);
+            del += new Del(Product);
+            del(10, 10);
+
+            del -= new Del(Add);
+
+              
+
+        }
+    }
+}
+--------------------------------------------------------
+AnonymousMethods
+
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace CollectionEnumDemo
+{
+    class AnonymousMethods
+    {
+        delegate int Del (int x, int y);
+        delegate int Del1(int x);
+        static void Main()
+        {
+
+            Del d = delegate (int x, int y)
+            {
+                return x + y;
+            };
+            Console.WriteLine(d(10,20));
+
+            // Lambda Methods are used to shorten syntax 
+            // of writing anoymous methods
+
+            // Lamda Expression
+            // (input) => { output; }
+            // Expression x+y ; 2*9;
+            Del1 d2 = x => x % 10;
+            Del d1 =  (x,  y) => x + y;
+             
+            Console.WriteLine(d1(10,20));
+
+            //Del del = new Del(Add);
+            //Console.WriteLine(del(10,20));
+        }
+        //static int Add(int x, int y)
+        //{ 
+        //    return x + y;
+        //}
+    }
+}
+
