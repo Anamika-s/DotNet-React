@@ -1,0 +1,193 @@
+Attributes
+
+#define C1
+
+using System;
+using System.Collections.Generic;
+using System.Diagnostics;
+using System.Text;
+
+namespace ConsoleApp3
+{
+    // Conditional > 
+    class AttributeDemo
+    {
+        [Conditional("C1")]
+        public static void Message(string msg)
+        {
+            Console.WriteLine(msg);
+        }
+
+    }
+
+    class Test
+    {
+
+        static void function2()
+        {
+            AttributeDemo.Message("Calling from function2");
+
+
+        }
+
+        static void Main()
+        {
+            Console.WriteLine("aaa");
+            AttributeDemo.Message("In Main function");
+            function2();
+        }
+    }
+}
+------------------------
+
+Custom Attribute
+
+using System;
+using System.Collections.Generic;
+using System.Text;
+
+namespace ConsoleApp3
+{
+    [AttributeUsage(AttributeTargets.Class | AttributeTargets.Method)]
+    class CustomAttribute : Attribute
+    {
+        string authorName;
+        string description;
+        string dateOfCreation;
+        public string AuthorName
+        {
+            get
+            {
+                return authorName;
+            }
+
+            set
+            {
+                authorName = value;
+            }
+
+        }
+        public string Description
+        {
+            get
+            {
+                return description;
+            }
+            set
+            {
+                description = value;
+            }
+        }
+        public string DateOfCreation
+        {
+            get
+            {
+                return dateOfCreation;
+            }
+            set
+            {
+                dateOfCreation = value;
+            }
+
+        }
+    }
+
+    [Custom(AuthorName = "Deepak Kumar", DateOfCreation = "12/12/2019", Description = "This is a class for developers")]
+    class Developer
+    {
+        public void Get()
+        {
+            Console.WriteLine("Get");
+        }
+        [Custom(AuthorName = "Arun Kumar", DateOfCreation = "12/12/2021", Description = "This is a method added for developers")]
+
+        public void Display()
+        {
+            Console.WriteLine("Display");
+        }
+
+    }
+
+    class Program
+    {
+        static void Main()
+        {
+            Developer developer1 = new Developer();
+            developer1.Get();
+            developer1.Display();
+        }
+    }
+}
+
+Using Reflection to get Attributes
+
+using System;
+using System.Collections.Generic;
+using System.Text;
+using System.Reflection;
+
+namespace ConsoleApp3
+{
+    class ReflectionDemo
+    {
+        static void Main()
+        {
+            // To give all custom attributes
+            MemberInfo info = typeof(Developer);
+            object[] attributes = info.GetCustomAttributes(true);
+            for (int i = 0; i < attributes.Length; i++)
+                Console.WriteLine(attributes[i]);
+
+            // to give info abt the custom attribute
+            Type type = typeof(Developer);
+            foreach (Object attribute in type.GetCustomAttributes(false))
+            {
+                CustomAttribute att = (CustomAttribute)attribute;
+                if (att != null)
+
+                {
+                    Console.WriteLine("Author is " + att.AuthorName);
+                    Console.WriteLine("Description is " + att.Description);
+                    Console.WriteLine("Creation Date is " + att.DateOfCreation);
+
+                }
+            }
+
+            // get attr info for methods
+            foreach (var member in type.GetMembers())
+            {
+                if (member.MemberType == MemberTypes.Method)
+                {
+                    Console.WriteLine(member);
+                }
+
+            }
+            foreach (MethodInfo methods in type.GetMethods())
+            {
+                //Console.WriteLine("method names " + methods);
+                if (!methods.ToString().Contains("System"))
+                {
+
+
+                    foreach (Attribute attribute in methods.GetCustomAttributes(false))
+                    {
+                        CustomAttribute att = (CustomAttribute)attribute;
+                        if (att != null)
+
+                        {
+                            Console.WriteLine("Author is " + att.AuthorName);
+                            Console.WriteLine("Description is " + att.Description);
+                            Console.WriteLine("Creation Date is " + att.DateOfCreation);
+
+                        }
+                    }
+                }
+
+            }
+
+
+        }
+    }
+}
+
+
