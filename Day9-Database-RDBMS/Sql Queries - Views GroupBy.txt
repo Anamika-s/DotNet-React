@@ -1,0 +1,120 @@
+
+--functions 
+-- functions 
+-- system defined , user defined
+-- system defined
+-- string functions > len left right trim 
+-- numeric > max min avg abs exp 
+-- datetime > day month datename datepart
+
+-- user defined functions
+
+-- functions cud be scalar / group functions/ aggregate functions
+-- scalar functions > which returns a single value
+
+
+-- scalar >  which act upon every record
+-- left , righ , abs pow concat day
+
+-- aggregate > sum count avg max min
+select max(salary)  As "Max Salart", min(salary) [Min Salary],
+sum(salary), avg(salary), count(salary) from employee
+-- group by clause
+
+create table sales(salesmanname varchar(20),
+region varchar(20),
+sales int)
+
+insert into sales values
+('harry','east',10),
+('gargi','west',20),
+('lalit','east',20),
+('pawan','north',10),
+('ravi','west',20),
+('lalit','east',25),
+('pawan','north',80),
+('lalit','west',98)
+
+
+
+select * from sales
+
+select sum(sales) from sales
+-- group by clause
+-- group by
+-- select {column} , aggregate funcytion
+-- from table 
+-- {where}
+-- group by column
+-- {having} aggre func
+
+select * from sales
+select salesmanname, sum(sales)
+from sales
+group by salesmanname
+
+
+select region, sum(sales)
+from sales
+group by region
+
+
+select salesmanname, region, sum(sales)
+from sales
+group by salesmanname , region
+
+
+select salesmanname, sum(sales)
+from sales
+where sales > 20
+group by salesmanname
+
+select salesmanname, sum(sales)
+from sales
+--where sales > 20
+group by salesmanname
+having sum(sales)>100
+
+--View 
+-- Virtual Table
+-- table which is based on some other tables
+-- purpose > security
+
+create view HRView
+As
+select * from employee where dept='HR'
+
+select * from sales
+
+create view northView
+As
+select * from sales where region='north'
+
+
+select * from northView
+insert into northView values('lalit','north',900)
+
+
+delete from northView
+
+insert into northView values('lalit','east',900)
+
+delete from northview where region='east'
+
+select * into salescopy from sales
+
+drop view SalesMoreThan200
+
+create view SalesMoreThan200
+As
+Select * from sales where sales > 200
+with check option
+
+select * from SalesMoreThan200
+
+insert into SalesMoreThan200 values('lalit','north',100)
+
+
+
+
+

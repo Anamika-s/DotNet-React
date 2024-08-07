@@ -1,0 +1,74 @@
+Relation 
+
+Entity > 
+
+Tuple >  Row / Record
+
+Attribute / column
+
+Degree of Relation > No of columns 
+
+Cardinality > No of tuples
+
+Integrity Rules
+1. Entity Integrity > Primary Key PK has 2 constraints 
+can not be null
+no duplicacy
+
+2. Referential Integrity > Foreign Key Fk can have either null, or value can be frm pk of some othet table
+
+create table STudent (rn int pk)
+
+create table fee(id int pk, rn int references stuent(rn) on delete set null)
+
+3. Domain Integrity > Domain (Set or pool of values frm which columns can take values)
+
+marks > 0 to 100
+course> C C++ DS
+
+(check clause)
+
+constraints > Restrictions on values that can be allowed in columns
+
+pk
+fk
+unique
+not null
+check
+default
+
+SQL > Features 
+language used to work with RDBMS
+case insenstive
+uses eng like words
+It has ststlemts of how many trypes
+
+
+DDL  create alter drop truncate table
+DML > insert delete update DQL > select
+DCL grant revoke
+TCL commit rollback savepoint
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

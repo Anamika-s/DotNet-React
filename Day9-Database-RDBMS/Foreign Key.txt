@@ -1,0 +1,112 @@
+--DDL DML 
+-- constraints 
+-- select BETWEEN IN LIKE 
+
+-- fk
+use courseDb
+
+create table Student (rn int primary key, name varchar(20) unique not null,
+address varchar(50), marks int check(marks between 0 and 100))
+
+drop table student
+
+create table Student (rn int constraint pk primary key, 
+name varchar(20) constraint unique_name unique not null,
+address varchar(50), 
+marks int constraint check_marks check(marks between 0 and 100))
+
+-- remove constr
+alter table student drop constraint unique_name
+
+-- add contstr
+
+alter table student add dob date constraint check_date 
+check(year(dob) between 2002 and 2008) 
+
+
+insert into student (rn, name , address, marks,
+dob) values(1,'Ajay', 'Delhi', 90, '12/12/2008')
+
+insert into student (rn, name , address, marks,
+dob) values(2,'Deepak', 'New Delhi', 98, '10/11/2007'),
+(3,'Garv', 'Calcutta', 78, '09/11/2003'),
+(4,'Lalit', 'New Delhi', 98, '08/10/2008'),
+(5,'Deepak', 'New Delhi', 98, '02/01/2006')
+
+select * From student
+
+create table Fees (rn int references student (rn),
+amtpaid int constraint checkamt check(amtpaid between 
+1000 and 15000), datepaid date default getdate())
+
+insert into fees(rn, amtpaid) values(2, 1200),
+(2,3000), (3,1200)
+
+select * from student
+select * from fees
+
+delete from student where rn = 4
+
+
+create table Fees1 (rn int references student (rn) 
+on delete cascade,
+amtpaid int constraint checkamt1 check(amtpaid between 
+1000 and 15000), datepaid date default getdate())
+
+
+insert into fees1(rn, amtpaid) values(2, 1200),
+(2,3000), (3,1200)
+
+select * from student
+select * from fees1
+
+delete from student where rn = 3
+
+
+
+
+create table Student2 (rn int constraint pk1 primary key, 
+name varchar(20) constraint unique_name1 unique not null,
+address varchar(50), 
+marks int constraint check_marks1 check(marks between 0 and 100))
+ 
+insert into student2 (rn, name , address, marks) 
+values(1,'Ajay', 'Delhi', 90),
+(2,'Deepak', 'New Delhi', 98),
+(3,'Garv', 'Calcutta', 78),
+(4,'Lalit', 'New Delhi', 98),
+(5,'Deepak1', 'New Delhi', 98)
+
+select * From student2
+
+ 
+create table Fees3 (rn int references student2 (rn)
+on delete cascade, -- on delete set null
+amtpaid int constraint checkamt3 check(amtpaid between 
+1000 and 15000), datepaid date default getdate())
+
+insert into fees3(rn, amtpaid) values(2, 1200),
+(2,3000), (3,1200)
+
+select * from student2
+select * from fees3
+
+delete from student2 where rn = 3
+
+
+create table Fees1 (rn int references student (rn) 
+on delete cascade,
+amtpaid int constraint checkamt1 check(amtpaid between 
+1000 and 15000), datepaid date default getdate())
+
+
+insert into fees1(rn, amtpaid) values(2, 1200),
+(2,3000), (3,1200)
+
+select * from student
+select * from fees1
+
+delete from student where rn = 3
+
+
+

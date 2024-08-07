@@ -1,0 +1,111 @@
+create database PracticeDb
+use PracticeDb
+-- constraints > Restrictions that you put on columns
+-- primary key > 1. unique 2. cannot be null
+create table Employee (id int primary key,
+name varchar(20) ,
+address varchar(20),
+doj datetime)
+
+insert into Employee values
+(2,'Ajay','Delhi','12/09/2009'),
+(3,'Ajay','Delhi','12/09/2009'),
+(4,'Ajay','Delhi','12/09/2009')
+
+select * from Employee
+-- How do we insert null in columns
+-- 1. implict 
+
+insert into Employee(id, address, name, doj) 
+values
+(5,'Delhi','Jatin','12/09/2009')
+
+
+-- 2. explicit 
+insert into Employee
+values
+(7,null,null,'12/09/2009')
+
+
+insert into Employee(id, name, doj) 
+values
+(6,'Jatin','12/09/2009')
+
+select * from Employee
+select * from Employee where address is Null
+
+select * from Employee where address is Not Null
+--2. constraint not null
+delete Employee where name is null
+
+-- id pk , name shud not have null, address cannoyt be repoeated,
+-- ddl 
+-- we cannot give condition
+-- delete > dml 
+-- we can give condition
+
+
+truncate table Employee
+
+drop table Employee
+
+create table Employee 
+(id int primary key,
+name varchar(20) not null,
+address varchar(50) unique,
+--salary int check(salary >=20000 and salary <=50000)
+salary int check(salary  between 20000 and 50000),
+--dept varchar(20) check(dept = 'HR'|| dept ='Accts' || dept ='IT')
+dept varchar(20) check(dept in ('HR','Accts','IT')),
+doj datetime check(doj between '12/12/2020' and '12/12/2023') default GetDate()
+)
+
+
+insert into Employee(id, name, address, salary, dept)  values
+(1,'Ajay','New Delhi',22000,'HR')
+select * from Employee
+
+insert into Employee(id, name, address, salary, dept)  values
+(3,'Karan','Calcutta',25000,'ccts')
+
+
+select * from Employee
+
+
+drop table Employee
+
+create table Employee 
+(id int constraint pk primary key,
+name varchar(20) not null,
+address varchar(50) constraint uniaddress unique,
+--salary int check(salary >=20000 and salary <=50000)
+salary int constraint csalary check(salary  between 20000 and 50000),
+--dept varchar(20) check(dept = 'HR'|| dept ='Accts' || dept ='IT')
+dept varchar(20) constraint cdept check(dept in ('HR','Accts','IT')),
+doj datetime constraint cdoj check(doj between '12/12/2020' and '12/12/2023') constraint ddoj default GetDate()
+)
+
+-- add / drop / modify column
+
+alter table Employee add experience int  check(experience > 8) 
+
+alter table Employee drop column experience
+
+alter table Employee alter column name varchar(30)
+
+drop table Student
+create table Student (rn int , name varchar(20))
+alter table Student alter column rn int not null
+alter table Student add  primary key(rn)
+
+alter table Employee drop constraint pk
+
+--drop database PracticeDb
+
+
+
+
+
+
+
+

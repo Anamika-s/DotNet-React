@@ -1,0 +1,131 @@
+-- JOINS
+
+--JOINS are used to bring data from more than 1 table
+
+-- inner join    > to bring matching data
+-- outer join    > to bring matching as well as nonmatching
+ -- left outer join
+ -- right outer join
+ -- full outer join
+-- cross join  > product of 2 tables
+-- self join  > used when a table is joined to itself
+
+-- inner join , outer join, there shud a common column
+-- cross join , there is no need to have a common column
+
+-- want to display styudent details along with batch details
+-- in which they are enrolled
+
+-- studnet & batch table
+
+-- batch 
+create table batch (batchid int primary key identity,
+batchname varchar(20), topic varchar(20),
+duration int,
+startdate date)
+
+create table stud(rn int primary key,
+name varchar(20),
+address varchar(20),
+batchcode int references batch(batchid))
+
+insert into batch (batchname,topic,duration,startdate)
+values
+('B001','C#', 10, '12/12/2023'),
+('B002','Java', 11, '10/12/2023'),
+('B003','DotNet', 50, '12/12/2023'),
+('B004','JSP', 45, '12/12/2023'),
+('B005','C', 10, '12/10/2024'),
+('B006','C++', 10, '12/12/2023'),
+('B007','PHP', 10, '12/12/2023'),
+('B008','Perl', 10, '12/12/2024'),
+('B009','Python', 10, '12/12/2024'),
+('B010','DS', 10, '12/12/2023')
+
+select *from batch
+
+insert into stud (rn,name,address,batchcode)
+values(100,'Ajay Sood','New Delhi',3),
+(101,'Ajay Singh','New Delhi',2),
+(102,'Ajay Dev','New Delhi',2),
+(103,'Ajay Kumar','New Delhi',4)
+
+insert into stud (rn,name,address,batchcode)
+values(110,'Ajay Sood','New Delhi',null)
+
+select *from batch
+select *from stud
+
+-- display stuent along with batch
+select rn,name, address, 
+batchcode, batchname, topic
+from stud inner join batch
+on stud.batchcode= batch.batchid
+
+
+select stud.rn,stud.name, stud.address, 
+stud.batchcode, batch.batchname, batch.topic
+from stud inner join batch
+on stud.batchcode= batch.batchid
+
+select a.rn,a.name, a.address, 
+a.batchcode, b.batchname, b.topic
+from stud a inner join batch b
+on a.batchcode= b.batchid
+
+-- outer join
+-- left outer join
+select a.rn,a.name, a.address, 
+a.batchcode, b.batchname, b.topic
+from stud a left outer join batch b
+on a.batchcode= b.batchid
+
+select a.rn,a.name, a.address, 
+a.batchcode, b.batchname, b.topic
+from stud a right outer join batch b
+on a.batchcode= b.batchid
+
+
+select a.rn,a.name, a.address, 
+a.batchcode, b.batchname, b.topic
+from stud a full outer join batch b
+on a.batchcode= b.batchid
+
+-- all the students shall enroll for all the batches
+-- cross join
+
+select * from stud cross join batch
+
+-- how to copy data from one table to other
+
+select * into newstud from stud
+
+select * from newstud
+select * into newstud1 from stud where 1=2
+
+drop table employee
+create table employee (id int primary key identity,
+name varchar(20), dept char(20), address varchar(20),
+managerid int references employee(id))
+
+
+insert into employee values('ajay', 'hr','delhi', null)
+insert into employee values('deepak', 'hr','delhi', 1)
+insert into employee values('lalit', 'hr','delhi', 1)
+insert into employee values('Sagar', 'hr','delhi', 2)
+insert into employee values('karan', 'hr','delhi', 3)
+
+select * from employee
+-- self join
+--display emp name & their manager names
+select a.name As "Employee Name" , b.name as "Manager Name" 
+from employee a join employee b 
+on a.managerid= b.id
+
+
+
+
+
+
+
+

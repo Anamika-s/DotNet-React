@@ -1,0 +1,138 @@
+
+create database TechDb
+use TechDb
+--DDL
+create table Employee(id int,
+name varchar(20),
+dept char(20),
+salary int)
+
+--DML
+insert into Employee values(1,'Ajay','HR',9000)
+--DQL
+Select * from EMployee
+insert into Employee values
+(2,'Vijay','HR',9000),
+(4,'Jay','HR',9000),
+(2,'Sagar','Accts',9000),
+(2,'Lalita','HR',9000),
+(2,'Pawan','HR',9000)
+
+Select * from EMployee
+
+-- where
+Select * from EMployee where id = 2
+
+Select * from EMployee where id >= 2 AND ID<=4
+-- BETWEEN
+Select * from EMployee where id between 2 and 4
+
+Select * from EMployee where id = 2 or id =4
+
+-- IN
+
+Select * from EMployee where id IN (2,4)
+
+Select * from EMployee where name LIKE 'Sagar'
+
+Select * from EMployee where name LIKE 'S%'
+
+Select * from EMployee where name LIKE '_a%'
+
+
+Select * from EMployee where name LIKE '%a'
+
+
+Select id, name from Employee
+
+Select id "Employee ID" , name "Employee Name" from EMployee where name LIKE 'S%'
+
+
+Select id AS "Employee ID" , name AS "Employee Name" from EMployee where name LIKE 'S%'
+
+
+
+-- DML
+
+update Employee set name ='A' where id=4
+
+delete Employee where id=4
+
+-- how to change table structure
+
+alter table employee add dob date
+
+
+Select * from EMployee 
+
+update Employee set DOB ='12/12/2009' where id between 1 and 2
+
+select * from Employee where dob is null
+
+
+select * from Employee where dob is not null
+
+alter table employee 
+add manager2 varchar(20) default 'Deepak' not null
+
+alter table Employee drop column manager
+
+alter table Employee alter column name varchar(50)
+
+-- rename a column
+
+sp_rename 'Employee.id', 'EmployeeId', 'COLUMN'
+
+sp_rename 'Employee' , 'NewEmployee'
+
+select GetDate()
+
+select convert(varchar, getDate(), 1)
+
+--https://www.mssqltips.com/sqlservertip/1145/date-and-time-conversions-using-sql-server/
+
+--what are constraints
+-- pk fk check def not null unique
+
+
+
+
+
+
+
+
+
+
+
+insert into EMployee(employeeid,name) values(9,'ll')
+select * from EMployee
+
+-- constraints
+create table Emp (id int primary key,
+name varchar(20) not null, address varchar(50) ,
+marks int check(marks between 0 and 100),
+dept varchar(20) check (dept In ('HR', 'Accts','Sales')),
+doj date check (doj >= getdate()),
+manager varchar(20) default 'Deepak')
+
+insert into Emp(id, name, marks)
+values(1, 'AJay', 19)
+
+select * from eMP
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

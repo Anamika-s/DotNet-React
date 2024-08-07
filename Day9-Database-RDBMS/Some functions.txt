@@ -1,0 +1,29 @@
+
+
+select upper('ajay')
+select upper(name), lower(name), len(name) from stud
+
+select trim('      this   ' ) 
+
+select exp(-9)
+
+select abs(-8)
+
+-- some functions are scalar 
+-- scalar functions are the functions which will act 
+-- upon a single value & will give you single result
+
+select upper(name), left(name,2) from stud
+
+-- some functioins are group functions or aggregate functions
+-- these functions work on group of records/values and then 
+-- gives you single result
+-- sum, max, min, avg, count
+
+select sum(marks) from student
+
+select sum(marks), max(marks), min(marks),
+avg(marks) from student
+
+select count(*) from batch
+
