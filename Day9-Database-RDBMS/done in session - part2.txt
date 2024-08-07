@@ -1,0 +1,223 @@
+--
+
+--ddl  - create alter drop
+-- dml insert delete update
+
+--views
+-- functions 
+-- group by clause
+
+create table Sales
+(salesmanname varchar(20),
+region varchar(20),
+salesdone int)
+
+insert into sales values
+('Ajay', 'South', 90),
+('Deepak', 'South', 19),
+('Sahil', 'North', 56),
+('Deepak', 'North', 78),
+('Ajay', 'East', 95),
+('Vijay', 'East', 45),
+('Farhan', 'South', 12),
+('Ajay', 'East', 67),
+('Gaurav', 'West', 90),
+('Meena', 'West', 23)
+
+select * from sales
+select sum(salesdone) As 'Total Sales' from sales
+-- total sales done nby every salesman
+-- group by
+-- select {columnname1}, aggregatefunction(num col)
+-- where 
+-- from table
+-- group by columnname1
+-- having (aggregatefunction(num col)) > condition
+
+select salesmanname, sum(salesdone)
+from sales 
+group by salesmanname
+
+-- total sales done in every region
+
+select region, sum(salesdone) As 'Total Sales'
+from sales 
+group by region
+
+-- total sales done by every salesman in every region
+
+select  salesmanname, region, sum(salesdone) As 'Total Sales'
+from sales 
+group by salesmanname,region
+
+
+select * from sales
+-- total sales done by every salesman
+-- but individual sales shud be more than 50
+select salesmanname, sum(salesdone)
+from sales 
+where salesdone > 50
+group by salesmanname
+
+-- total sales done by every salesman
+-- but final sales shud be more than 100
+
+select salesmanname, sum(salesdone)
+from sales 
+group by salesmanname
+having sum(salesdone)>100
+
+
+
+select salesmanname, sum(salesdone)
+from sales 
+where salesdone > 50 
+group by salesmanname
+having sum(salesdone)>80
+
+
+
+--------------------------------
+
+JOINS
+
+-- JOINS
+-- are used to bring data from more than 1 table
+-- inner join   (give you common records)
+-- outer join
+   -- left outer join
+   -- right outer join
+   -- full outer join
+-- cross join  (no need to have a common column)
+-- self join
+
+create table course(courseid int primary key identity,
+coursename varchar(20), Module varchar(20), duration int)
+
+create table batch (batchid int primary key 
+identity (100,1),
+batchname varchar(20), startdate datetime,
+trainer varchar(20),
+courseid int references course(courseid))
+
+--drop table course
+--drop table batch
+
+insert into course(coursename,Module,duration) values
+('DotNet','Module 1', 43),
+('DOtNet FSD','Module 2', 40),
+('Java','Module 1', 43),
+('C#','Module 1', 12),
+('Python','Module 3', 20)
+
+select * from course
+
+insert into batch(batchname,startdate,trainer,courseid) values
+('B001','12/09/2024','Trainer1',2),
+('B002','10/05/2024','Trainer3',4),
+('B003','05/10/2024','Trainer2',2),
+('B004','11/09/2024','Trainer4',4),
+('B005','12/09/2024','Trainer5',1)
+
+select * from course
+select * from batch
+
+
+
+select * from course
+select * from batch
+-- display batchname, startdate, trainer, coursename, module
+select batchname, startdate, trainer,coursename, module
+from batch inner join course
+on batch.courseid = course.courseid
+
+select batch.batchname, batch.startdate, 
+batch.trainer,course.coursename, course.module
+from batch inner join course
+on batch.courseid = course.courseid
+
+select a.batchname, a.startdate, 
+a.trainer,b.coursename, b.module
+from batch a inner join course b
+on a.courseid = b.courseid
+
+-- outer join
+-- gives you matching as well as non matching records
+
+select * from course
+select * from batch
+
+select a.batchname, a.startdate, 
+a.trainer,b.coursename, b.module
+from batch a left outer join course b
+on a.courseid = b.courseid
+
+
+
+select a.batchname, a.startdate, 
+a.trainer,b.coursename, b.module
+from batch a right outer join course b
+on a.courseid = b.courseid
+
+
+select a.batchname, a.startdate, 
+a.trainer,b.coursename, b.module
+from batch a full outer join course b
+on a.courseid = b.courseid
+
+-- cross join > PRODUCT OF TWO TABLES
+-- all courses shud run in all batches
+select a.*, b.* from batch a cross join course b
+-- self join
+-- used to link a table to itself
+select * from employee
+alter table employee drop column manager
+alter table employee drop constraint mancon
+
+alter table employee add managerid int references employee(id)
+update employee set managerid= 6 where id IN(1,4,7)
+
+update employee set managerid= 1 where id IN(6,8,9,11)
+
+update employee set managerid= 11 where id IN(2,3,10)
+
+-- display employee names along with their manager names
+
+select a.name As 'Employee Name',  
+b.name As 'Manager Name'
+from employee a join employee b
+on a.managerid= b.id
+
+
+-- copy recorsd of one table to other table
+select * into newTable from employee
+select * From newtable
+select id, name into newTable1 from employee
+where managerid=2
+
+-- copy structure of a table to other
+select * into table2 from employee where 1=2
+
+select * from table2
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
