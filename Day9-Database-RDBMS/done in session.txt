@@ -1,0 +1,192 @@
+-- constraints > restrictions that we put on the columns
+-- primary key
+-- not null
+-- unique
+-- check
+-- foreign key
+-- default
+-- we can add constraints 
+-- while creating table
+-- alter table to add constraints later
+
+create table Employee (id int primary key,
+name varchar(20) not null,
+address varchar(50),
+experience int check(experience between 2 And 4),
+doj datetime check (doj >= getdate()),
+dept varchar(10) not null check (dept IN ('HR', 'Accts','Sales')), 
+manager varchar(20) default 'Deepak Kumar')
+
+
+
+insert into Employee values(1,'Ajay',null, 3, '12/12/2024', 'HR','Maonj')
+insert into Employee values(2,'Deepak','New Delhi', 3, '12/12/2024', 'HR','Maonj')
+
+insert into Employee(id, name, experience, doj,dept,
+manager) values(3,'Deepak', 3, '12/12/2024', 'HR','Maonj')
+
+insert into Employee(id, name, experience, doj,dept) values(4,'Raman Dua', 3, '12/12/2024', 'HR')
+
+select * from employee
+
+
+select * from employee where address is null
+
+select * from employee where address is not null
+-- wild card characters
+-- name starts with D
+-- % means any number of characters
+select * from employee where name LIKE 'D%'
+-- name contains a
+select * from employee where name LIKE '%a%'
+
+--name has m at 3rd position
+-- _ means 1 character
+select * from employee where name LIKE '__m%'
+
+drop table  Employee
+
+create table Employee (id int constraint pk primary key,
+name varchar(20) not null,
+address varchar(50),
+experience int constraint expcon check(experience between 2 And 4),
+doj datetime constraint dojc check (doj >= getdate()),
+dept varchar(10) not null constraint deptcon check (dept IN ('HR', 'Accts','Sales')), 
+manager varchar(20) constraint mancon default 'Deepak Kumar')
+
+
+
+
+
+create table Dept (id int, name varchar(20),
+manager varchar(20))
+-- we have to add constarints to the table after is is created
+
+--alter table Dept add constraint def default (manager) with values ('Deepak')
+-- make column not nullable
+
+alter table Dept alter column name varchar(20) not null
+
+alter table Dept add constraint pk1 primary key(id)
+alter table Dept alter column id int not null
+
+
+alter table dept drop constraint pk1
+
+-- change column siize
+alter table dept alter column name varchar(30)
+
+
+--functions
+-- functions could be of 2 types
+-- system defined / user defined
+
+-- system defined
+-- string 
+-- numeric
+-- datetime
+
+-- functins cud be scalar or group functions
+-- scalar functions take single value & give yopu single result
+select * from employee
+select name, upper(name), lower(name), 
+len(name) from employee
+
+select SUBSTRING(name, 1,3) from employee
+select left(name, 3) from employee
+
+-- group functions/aggregate
+-- max min average sum count
+select count(*) from employee
+select sum(experience) , avg(experience),
+max(experience) from employee
+
+
+select getdate()
+select convert(varchar, getdate(), 1)
+
+Select datepart(day, getdate()) as currentdate
+
+Select datepart(year, getdate()) as currentdate
+
+insert into Employee values(6,'Gagan',null, 4, '12/12/2024', 'Accts','Maonj')
+insert into Employee values(7,'Deepak','New Delhi', 3, '12/12/2024', 'Sales','Maonj')
+
+insert into Employee(id, name, experience, doj,dept,
+manager) values(8,'Deepak', 3, '12/12/2024', 'Accts','Maonj')
+
+insert into Employee(id, name, experience, doj,dept)
+values(9,'Raman Dua', 4, '12/12/2024', 'Sales')
+
+-- these tables get data from some base table
+-- views cud be of 2 types
+-- 1. simple view > which gets data from 1 base table
+-- 2. complex views > which gets data from more than 1 base table
+-- we can perfrom insert/delete/update thru simple views
+-- we can not perfrom update thru complex views
+
+select * from employee
+-- views 
+-- virtual tables
+-- purpose > security of data
+
+create view HrView
+As
+select * from employee where dept ='HR'
+
+select * From HrView
+
+
+create view AcctsView
+As
+select * from employee where dept ='Accts'
+
+select * from AcctsView
+-- Can we perform insert/delete/update thru Views?
+-- YES
+
+
+insert into HrView(id, name, experience, doj,dept)
+values(10,'Raman Dua', 4, '12/12/2024', 'Sales')
+
+-- VIEWS DO NOT HAVE THEIR OWN DATA
+
+delete from HRView
+
+create view ExpView 
+as
+select * from employee where EXPerience =2
+
+
+select * from ExpView
+
+insert into ExpView(id, name, experience, doj,dept)
+values(12,'Raman Dua', 4, '12/12/2024', 'Sales')
+
+
+
+alter view ExpView 
+as
+select * from employee where EXPerience =2
+with check option
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

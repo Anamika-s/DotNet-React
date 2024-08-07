@@ -1,0 +1,59 @@
+           Assignment 2
+
+Create a table employee with the fllowing strducture
+
+ employee id
+ name
+ exp
+ salary
+ departmant name
+ Manager name
+
+	Here, which column u , will make primary key shud be auto generated
+create table Stu (rn int primary key identity(100,5) , name char(20))
+
+insert into Stu(name) values('Aman')
+
+select * from stu
+  
+	name has to have a value
+
+	exp cant be less than 2
+
+	salary can be in between 12000 AND 30000
+
+	departments can be only HR, Sales, Accts, IT
+
+ 
+ 
+Once, the table is populated , perform following operations:
+
+ 1. Dsiplay employee id , name , salary.
+ 2.Display employee id , where Employee ID  , name where NAme of EMployee ,   salary Salary f EMployee shud be displayed
+3.Display  name  salary and also incremented salary for all the employees
+4. Display Total salary dispursed for all the departments
+5. Display total salary, maximum salary, Average salary given in all the deprtments
+6. Depending uopn salary, arrange the records 
+7. Give a unique sequence to all the employees
+8. Depending uopn salary, giv ranking tp all the employees
+9. Add one more column age in employees table
+10. By default its value shud be 26
+11. Its range is 26 - 60
+ What value will be there for the records for this column now.
+ How can u put value 26 for all the records
+
+ 
+12. how many departments are there in the department
+13. Display all the names of the employees in upper case
+14. DIpslay only the first four alphbets from all the names
+15. DIsplay the position of a in all the names
+16.Display total number of employees working in every department
+17.Display total number of employees working for every Manager
+18. DIsplay all the recirds where employee ID is 101, 102 or 110
+19. GIve all records where empl id is in between 101 and 100
+20. Give all records where department is HR
+21. Give all records where department is HR or Accts
+22. Give all records where name starts with A
+23. GIve all records where name contains a
+24. Give all records where average sales is less than 12000 department wise
+25. Give records where department is not Accts and sales is not in between 10000 and 20000
