@@ -1,0 +1,14 @@
+Create a empty asp.net core web application
+Add folder wwwroot
+Add Index.html page there
+
+Try to open this in browser
+
+Ad middleware that will help in showing this page in browser
+(NOTE : use app.UseStaticFiles() middleware)
+
+Add 3 middlewares
+
+terminate chain when url contains /end
+add middleware by using use display hello1 hello2 and in 2 middlewares
+when the url contains hello display hello and move to next middleware
