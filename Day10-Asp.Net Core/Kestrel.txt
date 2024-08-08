@@ -1,0 +1,25 @@
+.Net Framework 
+Web Application , Windows , IIS 
+
+.Net Core 
+ Kestrel 
+
+Windows > IIS
+Unix > apache nginx tomcat
+
+
+.Core > Cross Platform
+
+Kestrel Server 
+
+ In how many steps compilation happens in C++, C , Java
+  1 Step :      HLL > LLL
+
+ In how many steps compilation happens in DotNet
+  2 Steps
+  
+    HLL > MSIL > LLL
+    
+ 
+
+
