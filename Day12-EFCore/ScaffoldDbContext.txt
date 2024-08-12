@@ -1,0 +1,3 @@
+
+
+Scaffold-DbContext   "Server=ANAMIKA\SQLSERVER;Database=StudentDb;Trusted_Connection=True;" Microsoft.EntityFrameworkCore.SqlServer -OutputDir Models
