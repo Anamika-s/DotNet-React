@@ -1,0 +1,21 @@
+Create Asp.Net core MVC application, explore project structure
+
+Add 2 controllers
+First
+Second
+
+Add 3 action methods in each of them
+
+index1 index2 index3
+
+Set the default routes
+
+Create your layout and use it
+
+Comment app.UseSTaticFiles and observe difference
+
+Add 3 middlewares
+
+terminate chain when url contains /end
+add middleware by using use display hello1 hello2
+when the url contains hello display hello and move to next middleware
