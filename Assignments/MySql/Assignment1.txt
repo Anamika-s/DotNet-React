@@ -1,0 +1,107 @@
+create database testdb;
+use testdb;
+
+
+CREATE TABLE employees (
+    emp_no      INT             NOT NULL,
+    birth_date  DATE            NOT NULL,
+    first_name  VARCHAR(14)     NOT NULL,
+    last_name   VARCHAR(16)     NOT NULL,
+    gender      ENUM ('M','F')  NOT NULL,    
+    hire_date   DATE            NOT NULL,
+    PRIMARY KEY (emp_no)
+);
+
+CREATE TABLE departments (
+    dept_no     CHAR(4)         NOT NULL,
+    dept_name   VARCHAR(40)     NOT NULL,
+    PRIMARY KEY (dept_no),
+    UNIQUE  KEY (dept_name)
+);
+
+CREATE TABLE dept_manager (
+   emp_no       INT             NOT NULL,
+   dept_no      CHAR(4)         NOT NULL,
+   from_date    DATE            NOT NULL,
+   to_date      DATE            NOT NULL,
+   FOREIGN KEY (emp_no)  REFERENCES employees (emp_no)    ON DELETE CASCADE,
+   FOREIGN KEY (dept_no) REFERENCES departments (dept_no) ON DELETE CASCADE,
+   PRIMARY KEY (emp_no,dept_no)
+); 
+
+CREATE TABLE dept_emp (
+    emp_no      INT             NOT NULL,
+    dept_no     CHAR(4)         NOT NULL,
+    from_date   DATE            NOT NULL,
+    to_date     DATE            NOT NULL,
+    FOREIGN KEY (emp_no)  REFERENCES employees   (emp_no)  ON DELETE CASCADE,
+    FOREIGN KEY (dept_no) REFERENCES departments (dept_no) ON DELETE CASCADE,
+    PRIMARY KEY (emp_no,dept_no)
+);
+
+CREATE TABLE titles (
+    emp_no      INT             NOT NULL,
+    title       VARCHAR(50)     NOT NULL,
+    from_date   DATE            NOT NULL,
+    to_date     DATE,
+    FOREIGN KEY (emp_no) REFERENCES employees (emp_no) ON DELETE CASCADE,
+    PRIMARY KEY (emp_no,title, from_date)
+) 
+; 
+
+CREATE TABLE salaries (
+    emp_no      INT             NOT NULL,
+    salary      INT             NOT NULL,
+    from_date   DATE            NOT NULL,
+    to_date     DATE            NOT NULL,
+    FOREIGN KEY (emp_no) REFERENCES employees (emp_no) ON DELETE CASCADE,
+    PRIMARY KEY (emp_no, from_date)
+) 
+; 
+
+
+### Problem 1
+
+Find the number of Male (M) and Female (F) employees in the database and order the counts in descending order.
+
+ 
+
+### Problem 2
+
+Find the average salary by employee title, round to 2 decimal places and order by descending order. 
+ 
+
+### Problem 3
+
+Find all the employees that have worked in at least 2 departments. Show their first name, last_name and the number of departments they work in. Display all results in ascending order.
+ 
+
+
+### Problem 4
+
+Display the first name, last name, and salary of the highest payed employee.
+
+ 
+
+### Problem 5
+
+Display the first name, last name, and salary of the **second** highest payed employee.
+
+ 
+
+### Problem 6
+
+Display the month and total hires for the month with the most hires. 
+
+ 
+
+### Problem 7 
+
+Display each department and the age of the youngest employee at hire date.
+ 
+
+### Problem 8
+
+Find all the employees that do not contain vowels in their first name and display the department they work in.
+
+ 
