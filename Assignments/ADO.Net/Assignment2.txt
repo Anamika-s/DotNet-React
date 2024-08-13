@@ -1,0 +1,20 @@
+                                                                                  ASSIGNMENT 
+
+
+Perform CRUD Operations on 
+Employee Entity using N Tier Architecture
+( ID required,  same ID shall not be allowed
+Name must , only alphabets, spaces allowed min 15 characters needed, 
+DateOfBirth must and  where Year of Birth should be in between 2002 and 2005
+DateofJoining where DOJ shallbe less than equal to Current Date
+Salary which could be nullable and if entered should be in between 12000 and 60000, 
+Dept shall be only HR Accts IT
+Password , must shall not be displayed
+ 
+) (With Validation)
+
+  Class Library > DAL , here all the database related activities will be there , SqlConnection , SqlCOmmand 
+  Class Library > BAL , here we will call DAL methods through DAL object
+  Class Library > DTO > which will contain all the classes  Data Transfer object   
+  Console Application > using BAL to call its methods through BAL object
+  

@@ -1,0 +1,11 @@
+                                                                                 Assignment 1
+
+Use Database First Approach  in Console Application, table should have primary key
+database : pract100, table student
+rn int primary key
+name 
+address
+batch
+
+
+Scaffold-DbContext   "Server=ANAMIKA\SQLSERVER;Database=StudentDb;Trusted_Connection=True;" Microsoft.EntityFrameworkCore.SqlServer -Output Dir Models

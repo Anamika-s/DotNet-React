@@ -1,0 +1,20 @@
+                                                          Assignment-DatabaseConnectivity (shud be solution name)
+
+Add 3 class libraries
+1 Console Application
+
+Perform CRUD Operations on 
+database name > Test1
+Batch Entity
+( ID required 
+Name
+DateOfStart
+DateofEnd 
+Capacity 
+Trainer 
+)  
+
+Create NLayered Architecture  for the above model
+DAL1 > using EF Core (Code First Approach)
+ 
+
