@@ -1,0 +1,19 @@
+Create Web Api using EF Code First Approach
+
+Database Name : TaskDb
+Table : Tasks  & SubTasks
+Perform CRUD operations
+ 
+ 
+TaskID PK
+TaskName
+Description
+Duration
+AssignedBy
+
+
+SubTask Table
+SubTaskId (PK)
+SubTaskName
+SubTaskDescription
+TaskID (FKey) to Task Table

@@ -1,0 +1,12 @@
+Create Web Api using ADO.Net
+
+Database Name : TaskDb
+Table : Task
+Perform CRUD operations
+ 
+ 
+TaskID PK
+TaskName
+Description
+Duration
+AssignedBy
