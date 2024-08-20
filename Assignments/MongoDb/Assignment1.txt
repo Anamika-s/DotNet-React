@@ -1,0 +1,2 @@
+                                                                Assignment 1
+For Queries, practice from here  > https://www.w3resource.com/mongodb-exercises/
