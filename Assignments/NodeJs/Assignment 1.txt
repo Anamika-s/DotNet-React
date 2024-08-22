@@ -1,0 +1,12 @@
+                                                                       Assignment 1
+
+Create Node Application NodeJsAssignment1
+
+Create server that shall run at port no 3005
+Display message Server has started at port no 3005
+
+Create  file file.txt , add content "this is first line of the file"
+
+Read contents of the file
+
+Display name of the current directory, date of creation, name of the OS, free memory

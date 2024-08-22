@@ -1,0 +1,23 @@
+                                                                       Assignment 2
+
+Create Node Application NodeJsExpressAssignment2
+
+Add following Controllers
+ In Browser all messages should come in red color and in h1
+
+ 1) homeController.js  with a message Home Page  in console and browser
+
+ 2) contactUsController.js with a message Contact Us in console and browser
+
+ 3) aboutUsController.js  with a message About Us in console and browser
+
+ 4) studentController.js
+    this should have 5 methods
+    addStudent  with a message Student has been added in console and browser
+    updateStudent  with a message Student has been updated in console and browser
+    deleteStudent  with a message Student has been deleted in console and browser
+    getAllStudents  with a message Students List in console and browser
+    getStudentById  with a message Student Details in console and browser
+ 
+  Add Routes for all of them in routes.js file in Web Folder
+  Add app.js file and run the application . Test it from Postman or ThunderClient
