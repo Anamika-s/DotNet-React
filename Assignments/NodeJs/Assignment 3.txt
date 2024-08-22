@@ -1,0 +1,11 @@
+ 
+Perform CRUD operations on Student Collection with following schema using mongoose
+ Database name has to be PractDb
+
+    StudentId: Number,
+    Name: String,
+    Roll: Number,
+    Birthday: Date,
+    Address: String
+ 
+
