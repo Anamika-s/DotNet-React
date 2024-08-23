@@ -1,0 +1,18 @@
+
+   Create a chat application
+
+  All the messages should be displayed to all users
+
+  When a user connects, first ask that user name that you will enter in a text box
+
+ display their name along with theirs chat messages
+
+ Like
+  
+  ajay : hello
+  Deepak :hello
+  ajay: how are you
+  Deepak : i am fine
+
+ Also, display total number of users connected on top of page in h1 
+ when a user disconnects. this count should decrease
