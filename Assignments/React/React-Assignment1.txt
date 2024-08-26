@@ -1,0 +1,26 @@
+1. Create a React App to display Hello World
+
+2. Add 4 function components 
+First
+Second
+Third
+Fourth
+
+Call them in App.js
+
+
+3. Add 4 class components 
+First1
+Second1
+Third1
+Fourth1
+
+Call them in App.js
+
+4. Pass name, address, scores from App Component to Student component
+-- using function comp
+-- using class comp
+
+5. Pass name, address from App component to Display Component, display them in text boxes and modify them in that Component
+
+6. Add 2 buttons, add events for onClick for them to display hello & bye
