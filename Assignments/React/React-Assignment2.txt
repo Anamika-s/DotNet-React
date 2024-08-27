@@ -1,0 +1,41 @@
+                                                                 Assignment 2
+
+1. Create a React App to pass user details from Login Component , and display the username in Welcome Component
+using
+1. Props
+2. using Context
+ 
+2. Create a React App to pass user details from Login Component , and display the username in Welcome Component
+using
+If the user has logged In than display Hello username m, and also show logout button
+otherwise show login 
+
+3. 
+   If the use has loggedIn, then display hello username , otherwise display 
+Registration Component (function component)
+Add User object with details like 
+ name 
+ address 
+ email
+ phonenumber
+ dept
+
+Display all details in Display Component. Pass values thru props, pass a single user object
+
+4. Add ColorContext, UserContext 
+  Create Comp1 , add color in colorContext
+ Create UserComp, add use object name 
+ address 
+ email
+ phonenumber
+ dept
+
+ Add 3 components
+ Comp1
+ Comp2 
+ Comp3
+ In All component, body background shud be taken from ColorContext
+ IN Com2, display all user details
+  if user details are not there, display message, pl provide details
+ IN Com3,  we should be able to change color to light brown
+
