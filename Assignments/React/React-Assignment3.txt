@@ -1,0 +1,40 @@
+                                                                                    Assignment 3
+
+1. Add a form that will take two numbers from user 
+
+     enter number 1
+     
+     enter number 2 
+
+      Sum > 
+      Difference > 
+      Product >
+      Remainder   
+
+Add these two numbers and display output
+   Do it through Controlled Components using 
+     a) Class Component
+     b) Function Component
+     2) Uncontrolled Component
+  
+2. Create Registration Form using State
+1. using Class Component
+2. using Function Component
+ elements shoud be 
+       enter first name
+       enter last name
+       enter email
+       enter password
+       enter address
+       enter mobile number
+              Register Button
+
+Display data in JSON Format
+
+
+3. Create Login Component using Ref and pass values to Welcome component. Display all details in Welcome component
+shud display
+
+  enter email
+  enter password 
+         Login Button
