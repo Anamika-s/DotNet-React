@@ -1,0 +1,30 @@
+                                         Assignment 5  (json-server) (using axios)
+	
+1. Create Registration Form using Function Component
+       elements shoud be 
+       enter first name
+       enter last name
+       enter email
+       enter password
+       enter address
+       enter mobile number
+                     Register Button
+
+Add Record in db.json file
+
+endpoint shud be users
+
+ON component load, all uses shall be displayed in table form
+ display only ID, First Name
+Perform all operations 
+Delete
+Edit
+Details where all details shall be displayed in list
+
+2. Create Login Component , check whether user exists or not from db.json file
+If exists, and pass values to Welcome component. Display Welcome, user name in Welcome component
+ 
+
+  enter email
+  enter password 
+         Login Button
