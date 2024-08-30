@@ -1,0 +1,2 @@
+npm i json-server
+json-server --watch public/db.json --port 8000
