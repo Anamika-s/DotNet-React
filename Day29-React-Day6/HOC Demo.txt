@@ -1,0 +1,164 @@
+import React, { Component } from 'react'
+
+export class Class1 extends Component {
+    state=
+    {
+ count:1
+    }
+    UpdateCount ()
+    {
+        this.setState(prevState=>{
+            
+            return {count:prevState.count+1}
+    })
+    }
+  render() {
+    return (
+      <div>
+        {this.state.count}
+        <button onClick={()=>this.UpdateCount()}> Update Count</button> </div>
+    )
+  }
+}
+
+export class Class2 extends Component {
+    state=
+    {
+ count:1
+    }
+    UpdateCount ()
+    {
+        this.setState(prevState=>{
+            
+            return {count:prevState.count+1}
+    })
+    }
+  render() {
+    return (
+      <div>
+        {this.state.count}
+        <button onMouseEnter={()=>this.UpdateCount()}> Update Count</button> </div>
+
+    )
+  }
+}
+
+App.js
+import React from 'react'
+import  Class1  from './HOC'
+import Class2 from './Class2'
+
+export const App3 = () => {
+  return (
+    <div>
+<h1> HIGHER ORDER Components </h1>
+      <Class1/>
+      <Class2/>
+    </div>
+  )
+}
+
+
+--------------------------------------
+
+import  React, { Component } from "react"
+const Wrapper = (OriginalComponent)=>{
+    console.log("aaa")
+    
+    class NewComp extends React.Component
+    {
+        constructor(props)
+        {console.log("con")
+            super(props);
+            this.state=
+                {
+                    count:1
+       
+                }
+    }
+     UpdateCount=()=>
+     {
+    console.log("upa")
+         this.setState(prevState=>{
+             
+             return {count:prevState.count+1}
+     })
+    }
+     
+     render() {
+        console.log("count" + this.state.count);
+         return <OriginalComponent count={this.state.count}
+         UpdateCount = {this.UpdateCount}/>
+ 
+       
+     }
+ 
+     }
+     return NewComp;
+ 
+ }
+ 
+ export default  Wrapper;
+
+--------------------------------------
+Change Class1
+import React, { Component } from 'react'
+import  Wrapper   from './Main'
+export class Class1 extends Component {
+    
+  render() {
+    const {count, UpdateCount} = this.props;
+    console.log("first" + count)
+   
+    return (
+      <div>
+        
+        {this.props.count}
+       
+        <button onClick={()=>this.props.UpdateCount()}> Update Count</button> </div>
+    )
+  }
+}
+
+
+export default Wrapper(Class1);
+----------------------------
+
+Class2
+
+import { Component } from "react"
+import Wrapper from "./Main";
+export class Class2 extends Component {
+    
+  render() {
+    let {count, UpdateCount} =this.props;
+
+    return (
+      <div>
+        {count}
+        <button onMouseEnter={()=>UpdateCount()}> Update Count</button> </div>
+    )
+  }
+}
+
+
+export default Wrapper(Class2);
+ 
+
+Ap.js
+
+import React from 'react'
+import  Class1  from './HOC'
+import Class2 from './Class2'
+
+export const App3 = () => {
+  return (
+    <div>
+<h1> HIGHER ORDER Components </h1>
+      <Class1/>
+      <Class2/>
+    </div>
+  )
+}
+
+
