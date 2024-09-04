@@ -1,0 +1,88 @@
+Create a Book Web Api with following classes
+
+Book
+int BookId    > PK
+String BookName
+String Description
+int CategoryId  > FK
+int AuthorID  > FK
+int Edition
+int PublisherId; > FK
+Date publishedDate;
+int pageCount;
+private String thumbnail;
+String CreatedBy
+DateTimeCreatedOn
+String ModifiedBy
+DateTime ModifiedOn
+bool IsActive
+
+Category  
+
+CategoryId  > PK
+CategoryName
+CreatedBy
+CreatedOn
+ModifiedBy
+ModifiedOn
+IsActive
+
+
+Author 
+
+AuthorId > PK
+AuthorName
+Country
+AuthorInformation
+CreatedBy > int user id
+CreatedOn = DateTime.Now
+ModifiedBy = null
+ModifiedOn = null
+IsActive = true
+
+
+Publisher
+
+PublisherId  > PK
+PublisherName
+Address
+ContactNumber
+Country
+CreatedBy
+CreatedOn
+ModifiedBy
+ModifiedOn
+IsActive
+
+Call this service from React
+There will be users of 3 types
+1. Admin
+2. Customer
+3. Moderator
+
+Admin can 
+Admin can also edit or delete users
+Add new books, publisher, author, category
+Edit book, publisher, author, category
+Delete book, publisher, author, category
+
+Customer can 
+See all books
+See all authors
+can see details of any book
+can add books to cart
+can purchase book
+
+Moderator can
+can edit book, author, publisher details
+but once moderator performs these actions, those shall be approved by Admin first, then it can be done
+
+
+every user can do
+can see all books, authors , publishers
+
+
+
+
+
+
