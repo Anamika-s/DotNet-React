@@ -1,0 +1,18 @@
+
+                                                                                Assignment 7
+  
+
+Task 1: Add Search feature in Assignment 6 on Product
+
+Task 2: When user is done with shopping , display payment page & show complete order 
+with details like 
+
+Order Id  , five any random number
+Order Date , current date
+Address > Take any random Address
+Products List
+
+Total Amount
+GST 
+
+Final Amount
