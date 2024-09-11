@@ -1,0 +1,19 @@
+Product > Id, Name,Price
+
+Display all products with Add to Cart button
+
+Display Cart
+You shoud be able to remove items from cart
+Add Products to Cart
+Display Total Amount
+
+Use Redux
+
+Actions can be 
+1. ADD
+2. LIST
+3. DELTE
+
+ 1. using redux
+ 2.useReducer Hook
+
